@@ -18,6 +18,11 @@ body {
   max-width: 480px;
 }
 
+input:focus {
+  border: 1px solid transparent;
+  outline: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
