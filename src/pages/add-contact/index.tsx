@@ -1,4 +1,5 @@
 import type { FormEvent } from "react";
+import EditAvater from "../../components/edit-avater";
 import Phone from "./../../assets/phone.svg?react";
 import User from "./../../assets/user.svg?react";
 
@@ -8,9 +9,10 @@ function AddContactPage() {
   };
 
   return (
-    <main>
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <div className="bg-white flex items-center gap-2">
+    <main className="flex flex-col items-center gap-4 p-4">
+      <EditAvater image={""} />
+      <form className="flex flex-col gap-4 w-full" onSubmit={handleSubmit}>
+        <div className="bg-white flex items-center gap-2 p-4 rounded-lg">
           <User width={24} height={24} />
           <input
             type="text"
@@ -18,7 +20,7 @@ function AddContactPage() {
             className="h-8 w-full border-none"
           />
         </div>
-        <div className="bg-white flex items-center gap-2">
+        <div className="bg-white flex items-center gap-2 p-4 rounded-lg">
           <Phone width={24} height={24} />
           <input
             type="number"
