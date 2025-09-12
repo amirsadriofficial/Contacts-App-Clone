@@ -35,8 +35,6 @@ function MyProfilePage() {
           <ContactInfoDetail title="Share" />
           <ContactInfoDetail title="All Contacts" />
           <ContactInfoDetail title="Emergency Contacts" />
-          <ContactInfoDetail title="Favorite List" />
-          <ContactInfoDetail title="Groups" />
           <ContactInfoDetail title="Manage Contacts" />
         </ItemDetailContainer>
         <ItemDetailContainer>

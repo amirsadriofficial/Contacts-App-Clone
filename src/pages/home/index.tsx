@@ -61,15 +61,15 @@ function HomePage() {
         {!searchQuery && (
           <p className="pl-2 pt-2">All Contacts ({contacts.length})</p>
         )}
-        {filteredContacts.length > 0 ? (
+        {filteredContacts.length > 0 &&
           filteredContacts.map((contact) => (
             <ContactItem
               key={contact.id}
               contact={contact}
               onContactsChange={handleContactsChange}
             />
-          ))
-        ) : (
+          ))}
+        {searchQuery && filteredContacts.length === 0 && (
           <p className="text-gray-500 text-center mt-10 text-xl">
             No contacts found
           </p>
