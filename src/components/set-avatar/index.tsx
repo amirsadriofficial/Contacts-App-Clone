@@ -5,7 +5,7 @@ import FileUploader from "../file-uploader";
 
 interface ISetAvatarProps {
   avatar?: string;
-  setAvatar?: (img: string | null) => void;
+  setAvatar?: (img: string | undefined) => void;
 }
 
 function SetAvatar({ avatar, setAvatar }: ISetAvatarProps) {

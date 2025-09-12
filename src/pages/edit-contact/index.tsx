@@ -9,7 +9,7 @@ function EditContactPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [contact, setContact] = useState<IContactItem | null>(null);
-  const [avatar, setAvatar] = useState<string | null>(null);
+  const [avatar, setAvatar] = useState<string | undefined>(undefined);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState<number | undefined>();
   // Load contact by ID

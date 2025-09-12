@@ -8,7 +8,7 @@ import User from "./../../assets/user.svg?react";
 function AddContactPage() {
   // State for contact data (not persisted yet)
   const navigate = useNavigate();
-  const [avatar, setAvatar] = useState<string | null>(null);
+  const [avatar, setAvatar] = useState<string>();
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   // Toast
@@ -31,7 +31,7 @@ function AddContactPage() {
     // Save new one
     localStorage.setItem("contacts", JSON.stringify([...existing, newContact]));
     // Reset after saving
-    setAvatar(null);
+    setAvatar(undefined);
     setFullName("");
     setPhone("");
     notify();
@@ -39,7 +39,7 @@ function AddContactPage() {
   };
   // Cancel handler → just clear everything
   const handleCancel = () => {
-    setAvatar(null);
+    setAvatar(undefined);
     setFullName("");
     setPhone("");
     navigate(-1);
