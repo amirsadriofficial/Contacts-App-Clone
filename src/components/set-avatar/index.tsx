@@ -4,8 +4,8 @@ import Edit from "../../assets/edit.svg?react";
 import FileUploader from "../file-uploader";
 
 interface ISetAvatarProps {
-  avatar: string | null;
-  setAvatar: (img: string | null) => void;
+  avatar?: string;
+  setAvatar?: (img: string | null) => void;
 }
 
 function SetAvatar({ avatar, setAvatar }: ISetAvatarProps) {
@@ -20,7 +20,9 @@ function SetAvatar({ avatar, setAvatar }: ISetAvatarProps) {
     const reader = new FileReader();
     reader.onloadend = () => {
       const base64 = reader.result as string;
-      setAvatar(base64);
+      if (setAvatar) {
+        setAvatar(base64);
+      }
       notify();
     };
     reader.readAsDataURL(file);
@@ -39,12 +41,14 @@ function SetAvatar({ avatar, setAvatar }: ISetAvatarProps) {
           No Avatar
         </div>
       )}
-      <FileUploader
-        className="flex justify-center items-center rounded-[8px] bg-white absolute bottom-0 right-0 box-shadow-3 h-[40px] w-[40px]"
-        onChange={handleFileUpload}
-      >
-        <Edit width={20} height={20} />
-      </FileUploader>
+      {setAvatar && (
+        <FileUploader
+          className="flex justify-center items-center rounded-[8px] bg-white absolute bottom-0 right-0 box-shadow-3 h-[40px] w-[40px]"
+          onChange={handleFileUpload}
+        >
+          <Edit width={20} height={20} />
+        </FileUploader>
+      )}
     </div>
   );
 }

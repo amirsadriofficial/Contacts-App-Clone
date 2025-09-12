@@ -74,7 +74,7 @@ function EditContactPage() {
           <button type="button" className="w-full" onClick={handleCancel}>
             Cancel
           </button>
-          <button type="submit" className="w-full">
+          <button type="submit" className="w-full font-semibold text-black">
             Save
           </button>
         </div>

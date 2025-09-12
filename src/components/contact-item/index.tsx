@@ -49,7 +49,10 @@ function ContactItem({ contact, onContactsChange }: IContactItemProps) {
 
   return (
     <div className="p-2 flex items-center justify-between rounded-lg bg-white">
-      <div className="flex items-center gap-2">
+      <div
+        className="flex items-center gap-2 cursor-pointer"
+        onClick={() => navigate(`/contact/${contact?.id}`)}
+      >
         {contact.avatar && !imgError ? (
           <img
             src={contact.avatar}
