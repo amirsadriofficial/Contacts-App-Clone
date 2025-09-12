@@ -1,18 +1,26 @@
+import Delete from "@assets/delete.svg?react";
+import Edit from "@assets/edit.svg?react";
 import { useMemo, useState } from "react";
-import Delete from "../../assets/delete.svg?react";
-import Edit from "../../assets/edit.svg?react";
 
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import type { IContactItem } from "../../types";
+import DeleteConfirmation from "../delete-confirmation";
 
 interface IContactItemProps {
   contact: IContactItem;
+  onContactsChange?: () => void;
 }
 
-function ContactItem({ contact }: IContactItemProps) {
+function ContactItem({ contact, onContactsChange }: IContactItemProps) {
   const navigate = useNavigate();
   const [imgError, setImgError] = useState(false);
-
+  const [showConfirm, setShowConfirm] = useState(false);
+  const notify = () =>
+    toast("Contact deleted!", {
+      type: "success",
+      theme: "colored",
+    });
   // Generate random background color for broken avatars
   const bgColor = useMemo(() => {
     const colors = [
@@ -27,6 +35,17 @@ function ContactItem({ contact }: IContactItemProps) {
     const index = contact?.fullName?.charCodeAt(0) % colors.length;
     return colors[index];
   }, [contact.fullName]);
+  // Handle delete inside the component
+  const handleDelete = () => {
+    const storedContacts: IContactItem[] = JSON.parse(
+      localStorage.getItem("contacts") || "[]"
+    );
+    const updated = storedContacts.filter((item) => item.id !== contact.id);
+    localStorage.setItem("contacts", JSON.stringify(updated));
+    notify();
+    setShowConfirm(false);
+    if (onContactsChange) onContactsChange();
+  };
 
   return (
     <div className="p-2 flex items-center justify-between rounded-lg bg-white">
@@ -53,8 +72,18 @@ function ContactItem({ contact }: IContactItemProps) {
           height={20}
           onClick={() => navigate(`/edit-contact/${contact?.id}`)}
         />
-        <Delete width={20} height={20} fill="#f6f6f6" />
+        <Delete
+          width={20}
+          height={20}
+          className="cursor-pointer"
+          onClick={() => setShowConfirm(true)}
+        />
       </div>
+      <DeleteConfirmation
+        isOpen={showConfirm}
+        onClose={() => setShowConfirm(false)}
+        onConfirm={handleDelete}
+      />
     </div>
   );
 }

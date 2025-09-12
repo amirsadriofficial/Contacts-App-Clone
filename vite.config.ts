@@ -4,7 +4,6 @@ import { resolve } from "path";
 import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss(), svgr()],
   resolve: {
@@ -12,6 +11,8 @@ export default defineConfig({
       "@src": resolve(__dirname, "src"),
       "@assets": resolve(__dirname, "src/assets"),
       "@components": resolve(__dirname, "src/components"),
+      "@constants": resolve(__dirname, "src/constants"),
+      "@types": resolve(__dirname, "src/types"),
     },
   },
   server: {

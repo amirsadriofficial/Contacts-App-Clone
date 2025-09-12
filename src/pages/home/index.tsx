@@ -1,10 +1,10 @@
+import Add from "@assets/add.svg?react";
+import Search from "@assets/search.svg?react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ContactItem from "../../components/contact-item";
 import { mockContacts } from "../../constants/MOCK_DATA";
 import type { IContactItem } from "../../types";
-import Add from "./../../assets/add.svg?react";
-import Search from "./../../assets/search.svg?react";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -22,6 +22,10 @@ function HomePage() {
   const filteredContacts = contacts.filter((contact) =>
     contact?.fullName?.toLowerCase()?.includes(searchQuery?.toLowerCase())
   );
+  const handleContactsChange = () => {
+    const stored = JSON.parse(localStorage.getItem("contacts") || "[]");
+    setContacts(stored);
+  };
 
   return (
     <main>
@@ -52,7 +56,11 @@ function HomePage() {
       <section className="flex flex-col gap-2 p-2">
         {filteredContacts.length > 0 ? (
           filteredContacts.map((contact) => (
-            <ContactItem key={contact.id} contact={contact} />
+            <ContactItem
+              key={contact.id}
+              contact={contact}
+              onContactsChange={handleContactsChange}
+            />
           ))
         ) : (
           <p className="text-gray-500 text-center mt-10 text-xl">
