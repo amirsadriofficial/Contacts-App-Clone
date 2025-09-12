@@ -33,7 +33,7 @@ In this project we follow the folder structuring based on our folder categoriy.
     └── constants
     └── pages
     └── types
-    └── utils
+    # └── utils
 ```
 
 ## Folders Category
@@ -43,7 +43,7 @@ In this project we follow the folder structuring based on our folder categoriy.
 - `constants`: all of constant variables like mock data, queries and ect.
 - `pages`: all of the pages.
 - `types`: all of the global types.
-- `utils`: all of static data and helper functions such Translation, DateCalculater and etc.
+<!-- - `utils`: all of static data and helper functions. -->
 
 ## Setup
 
