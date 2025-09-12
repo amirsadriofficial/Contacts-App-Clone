@@ -56,7 +56,7 @@ function ContactPage() {
         <SetAvatar avatar={contact?.avatar as string} />
         <button
           type="button"
-          className=" cursor-pointer text-blue-500 font-semibold"
+          className="cursor-pointer text-blue-500 font-semibold"
           onClick={handleRedirectToEdit}
         >
           Edit
