@@ -1,69 +1,64 @@
-# React + TypeScript + Vite
+# Contact App Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React + TypeScript project that manages a list of contacts with CRUD functionality (Create, Read, Update, Delete). The project demonstrates local storage persistence, search, responsive UI and etc.
 
-Currently, two official plugins are available:
+See it live from [here](https://contacts-app-clone.vercel.app/).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Full Responsive - all pages
+- View Contacts – List of 30 mock contacts with avatars.
+- Search – Real-time search filtering.
+- Add Contact – Create new contacts.
+- Edit Contact – Update existing contact info.
+- Delete Contact – Permission modal (desktop) or bottom sheet (mobile) before deleting.
+- Local Storage Persistence – Contacts remain after refresh.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Technologies
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- React JS
+- Typescript
+- TailwindCSS
+- Vite
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Folder Structuring
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+In this project we follow the folder structuring based on our folder categoriy.
+
+```bash
+.
+└── src/
+    └── assets
+    └── components
+    └── constants
+    └── pages
+    └── types
+    └── utils
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Folders Category
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- `assets`: all of assets related to user interface such icons, images and etc.
+- `components`: all of component related to user interacting such Inputs, Buttons, Text fields and etc.
+- `constants`: all of constant variables like mock data, queries and ect.
+- `pages`: all of the pages.
+- `types`: all of the global types.
+- `utils`: all of static data and helper functions such Translation, DateCalculater and etc.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Setup
+
+After cloning the repository, enter the main directory of the project and run the following command to install the required packages:
+
 ```
+### pnpm install
+```
+
+After installing the packages, run the following command to run the program:
+
+```
+### pnpm run dev
+```
+
+After the project is executed, open the following address in your browser and view the website:
+
+### http://localhost:3000
