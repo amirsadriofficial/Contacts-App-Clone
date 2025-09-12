@@ -22,16 +22,16 @@ function ContactItem({ contact }: IContactItemProps) {
       "bg-pink-500",
       "bg-indigo-500",
     ];
-    const index = contact.title.charCodeAt(0) % colors.length;
+    const index = contact?.fullName?.charCodeAt(0) % colors.length;
     return colors[index];
-  }, [contact.title]);
+  }, [contact.fullName]);
 
   return (
-    <div className="p-2 flex items-center justify-between">
+    <div className="p-2 flex items-center justify-between rounded-lg bg-white">
       <div className="flex items-center gap-2">
-        {contact.image && !imgError ? (
+        {contact.avatar && !imgError ? (
           <img
-            src={contact.image}
+            src={contact.avatar}
             alt="avatar"
             className="w-8 h-8 rounded-full object-cover"
             onError={() => setImgError(true)}
@@ -40,10 +40,10 @@ function ContactItem({ contact }: IContactItemProps) {
           <div
             className={`w-8 h-8 rounded-full flex items-center justify-center text-white font-semibold ${bgColor}`}
           >
-            {contact.title?.[0]?.toUpperCase() || "?"}
+            {contact.fullName?.[0]?.toUpperCase() || "?"}
           </div>
         )}
-        <p>{contact?.title}</p>
+        <p>{contact?.fullName}</p>
       </div>
       <div className="flex items-center gap-4">
         <Edit width={20} height={20} />

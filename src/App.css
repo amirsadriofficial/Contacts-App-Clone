@@ -15,7 +15,7 @@
 
 body {
   margin: 0 auto;
-  max-width: 480px;
+  /* max-width: 480px; */
 }
 
 input:focus {

@@ -1,5 +1,6 @@
 export interface IContactItem {
   id: string;
-  image: string;
-  title: string;
+  avatar: string;
+  fullName: string;
+  phone: number;
 }
