@@ -4,12 +4,14 @@ import AddContactPage from "./pages/add-contact";
 import ContactPage from "./pages/contact";
 import EditContactPage from "./pages/edit-contact";
 import HomePage from "./pages/home";
+import MyProfilePage from "./pages/my-profile";
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/my-profile" element={<MyProfilePage />} />
         <Route path="/add-contact" element={<AddContactPage />} />
         <Route path="/edit-contact/:id" element={<EditContactPage />} />
         <Route path="/contact/:id" element={<ContactPage />} />

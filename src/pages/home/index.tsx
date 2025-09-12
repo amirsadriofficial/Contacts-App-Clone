@@ -1,4 +1,5 @@
 import Add from "@assets/add.svg?react";
+import MyProfile from "@assets/my-profile.svg?react";
 import Search from "@assets/search.svg?react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -30,13 +31,16 @@ function HomePage() {
   return (
     <main>
       <section className="flex items-center justify-between bg-white mb-2 py-2 px-4">
-        <div className="flex items-center gap-2">
-          <p className="text-2xl font-semibold">Contacts</p>
-          <p>({contacts.length})</p>
-        </div>
+        <MyProfile
+          width={32}
+          height={32}
+          onClick={() => navigate("/my-profile")}
+          className="cursor-pointer font-bold"
+        />
+        <p className="text-xl font-semibold">Contacts</p>
         <Add
-          width={36}
-          height={36}
+          width={32}
+          height={32}
           onClick={() => navigate("/add-contact")}
           className="cursor-pointer"
         />
@@ -54,6 +58,9 @@ function HomePage() {
         </div>
       </section>
       <section className="flex flex-col gap-2 p-2">
+        {!searchQuery && (
+          <p className="pl-2 pt-2">All Contacts ({contacts.length})</p>
+        )}
         {filteredContacts.length > 0 ? (
           filteredContacts.map((contact) => (
             <ContactItem

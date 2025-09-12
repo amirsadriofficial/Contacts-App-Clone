@@ -1,12 +1,12 @@
+import Back from "@assets/back.svg?react";
+import Phone from "@assets/phone.svg?react";
+import User from "@assets/user.svg?react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import DeleteConfirmation from "../../components/delete-confirmation";
 import SetAvatar from "../../components/set-avatar";
 import type { IContactItem } from "../../types";
-import Back from "./../../assets/back.svg?react";
-import Phone from "./../../assets/phone.svg?react";
-import User from "./../../assets/user.svg?react";
 
 function ContactPage() {
   const { id } = useParams<{ id: string }>();
@@ -91,13 +91,13 @@ function ContactPage() {
           <p className="py-2 cursor-pointer">Add to Favorite</p>
         </div>
         <div className="bg-white flex flex-col px-4 rounded-lg divide-y-[1px] divide-gray-300 text-red-500">
-          <p className="py-2 cursor-pointer">Block Contact</p>
           <p
             className="py-2 cursor-pointer"
             onClick={() => setShowConfirm(true)}
           >
             Delete Contact
           </p>
+          <p className="py-2 cursor-pointer">Block Contact</p>
         </div>
       </section>
       <DeleteConfirmation
