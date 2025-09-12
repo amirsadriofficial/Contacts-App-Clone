@@ -1,4 +1,5 @@
 import Back from "@assets/back.svg?react";
+import Email from "@assets/email.svg?react";
 import Phone from "@assets/phone.svg?react";
 import User from "@assets/user.svg?react";
 import { useEffect, useState } from "react";
@@ -66,9 +67,7 @@ function ContactPage() {
         <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
           <User width={24} height={24} />
           <input
-            required
             type="text"
-            placeholder="Full Name"
             className="h-8 w-full border-none"
             value={contact?.fullName}
             readOnly
@@ -77,11 +76,19 @@ function ContactPage() {
         <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
           <Phone width={24} height={24} />
           <input
-            required
             type="number"
-            placeholder="Phone Number"
             className="h-8 w-full border-none"
             value={contact?.phone}
+            readOnly
+          />
+        </div>
+        <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
+          <Email width={24} height={24} />
+          <input
+            type="email"
+            placeholder="No Email"
+            className="h-8 w-full border-none"
+            value={contact?.email}
             readOnly
           />
         </div>

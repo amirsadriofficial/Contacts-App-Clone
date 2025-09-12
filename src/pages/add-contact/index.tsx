@@ -1,15 +1,17 @@
+import Email from "@assets/email.svg?react";
+import Phone from "@assets/phone.svg?react";
+import User from "@assets/user.svg?react";
 import { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import SetAvatar from "../../components/set-avatar";
-import Phone from "./../../assets/phone.svg?react";
-import User from "./../../assets/user.svg?react";
 
 function AddContactPage() {
   // State for contact data (not persisted yet)
   const navigate = useNavigate();
   const [avatar, setAvatar] = useState<string>();
   const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   // Toast
   const notify = () =>
@@ -33,6 +35,7 @@ function AddContactPage() {
     // Reset after saving
     setAvatar(undefined);
     setFullName("");
+    setEmail("");
     setPhone("");
     notify();
     navigate(-1);
@@ -41,6 +44,7 @@ function AddContactPage() {
   const handleCancel = () => {
     setAvatar(undefined);
     setFullName("");
+    setEmail("");
     setPhone("");
     navigate(-1);
   };
@@ -70,6 +74,16 @@ function AddContactPage() {
             className="h-8 w-full border-none"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
+          />
+        </div>
+        <div className="bg-white flex items-center gap-2 p-4 rounded-lg">
+          <Email width={24} height={24} />
+          <input
+            type="email"
+            placeholder="Add Email"
+            className="h-8 w-full border-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="flex items-center gap-2 absolute left-0 bottom-4 w-full">

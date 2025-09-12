@@ -3,4 +3,5 @@ export interface IContactItem {
   avatar: string;
   fullName: string;
   phone: number;
+  email?: string;
 }

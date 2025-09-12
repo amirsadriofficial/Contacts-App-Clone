@@ -1,9 +1,10 @@
+import Email from "@assets/email.svg?react";
+import Phone from "@assets/phone.svg?react";
+import User from "@assets/user.svg?react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SetAvatar from "../../components/set-avatar";
 import type { IContactItem } from "../../types";
-import Phone from "./../../assets/phone.svg?react";
-import User from "./../../assets/user.svg?react";
 
 function EditContactPage() {
   const { id } = useParams<{ id: string }>();
@@ -11,6 +12,7 @@ function EditContactPage() {
   const [contact, setContact] = useState<IContactItem | null>(null);
   const [avatar, setAvatar] = useState<string | undefined>(undefined);
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [phone, setPhone] = useState<number | undefined>();
   // Load contact by ID
   useEffect(() => {
@@ -68,6 +70,16 @@ function EditContactPage() {
             className="h-8 w-full border-none"
             value={phone}
             onChange={(e) => setPhone(Number(e.target.value))}
+          />
+        </div>
+        <div className="bg-white flex items-center gap-2 p-4 rounded-lg">
+          <Email width={24} height={24} />
+          <input
+            type="email"
+            placeholder="Add Email"
+            className="h-8 w-full border-none"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className="flex items-center gap-2 absolute left-0 bottom-4 w-full">
