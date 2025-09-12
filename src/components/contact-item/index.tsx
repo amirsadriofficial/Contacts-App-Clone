@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import Delete from "../../assets/delete.svg?react";
 import Edit from "../../assets/edit.svg?react";
 
+import { useNavigate } from "react-router-dom";
 import type { IContactItem } from "../../types";
 
 interface IContactItemProps {
@@ -9,6 +10,7 @@ interface IContactItemProps {
 }
 
 function ContactItem({ contact }: IContactItemProps) {
+  const navigate = useNavigate();
   const [imgError, setImgError] = useState(false);
 
   // Generate random background color for broken avatars
@@ -46,7 +48,11 @@ function ContactItem({ contact }: IContactItemProps) {
         <p>{contact?.fullName}</p>
       </div>
       <div className="flex items-center gap-4">
-        <Edit width={20} height={20} />
+        <Edit
+          width={20}
+          height={20}
+          onClick={() => navigate(`/edit-contact/${contact?.id}`)}
+        />
         <Delete width={20} height={20} fill="#f6f6f6" />
       </div>
     </div>
