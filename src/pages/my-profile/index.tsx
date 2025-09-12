@@ -1,13 +1,16 @@
 import Back from "@assets/back.svg?react";
-import Phone from "@assets/phone.svg?react";
-import User from "@assets/user.svg?react";
 import { useNavigate } from "react-router-dom";
+import ContactDangrousDetail from "../../components/contact-dangrous-detail";
+import ContactDetails from "../../components/contact-detail";
+import ContactInfoDetail from "../../components/contact-info-detail";
+import ItemDetailContainer from "../../components/item-detail-container";
 import SetAvatar from "../../components/set-avatar";
 
 function MyProfilePage() {
   const navigate = useNavigate();
   const myFullName = "AmirAbbas Sadri";
   const myPhone = 9120075897;
+  const myEmail = "Amirsadriofficial@gmail.com";
 
   return (
     <main className="flex flex-col items-center gap-4 p-4">
@@ -27,40 +30,19 @@ function MyProfilePage() {
         </button>
       </div>
       <section className="flex flex-col gap-4 w-full">
-        <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
-          <User width={24} height={24} />
-          <input
-            required
-            type="text"
-            placeholder="Full Name"
-            className="h-8 w-full border-none"
-            value={myFullName}
-            readOnly
-          />
-        </div>
-        <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
-          <Phone width={24} height={24} />
-          <input
-            required
-            type="number"
-            placeholder="Phone Number"
-            className="h-8 w-full border-none"
-            value={myPhone}
-            readOnly
-          />
-        </div>
-        <div className="bg-white flex flex-col px-4 rounded-lg divide-y-[1px] divide-gray-300 text-blue-500">
-          <p className="py-2 cursor-pointer">Share</p>
-          <p className="py-2 cursor-pointer">All Contacts</p>
-          <p className="py-2 cursor-pointer">Emergency Contacts</p>
-          <p className="py-2 cursor-pointer">Favorite List</p>
-          <p className="py-2 cursor-pointer">Groups</p>
-          <p className="py-2 cursor-pointer">Manage Contacts</p>
-        </div>
-        <div className="bg-white flex flex-col px-4 rounded-lg divide-y-[1px] divide-gray-300 text-red-500">
-          <p className="py-2 cursor-pointer">Trash</p>
-          <p className="py-2 cursor-pointer">Blocked Contacts</p>
-        </div>
+        <ContactDetails fullName={myFullName} phone={myPhone} email={myEmail} />
+        <ItemDetailContainer>
+          <ContactInfoDetail title="Share" />
+          <ContactInfoDetail title="All Contacts" />
+          <ContactInfoDetail title="Emergency Contacts" />
+          <ContactInfoDetail title="Favorite List" />
+          <ContactInfoDetail title="Groups" />
+          <ContactInfoDetail title="Manage Contacts" />
+        </ItemDetailContainer>
+        <ItemDetailContainer>
+          <ContactDangrousDetail title="Trash" />
+          <ContactDangrousDetail title="Blocked Contacts" />
+        </ItemDetailContainer>
       </section>
     </main>
   );

@@ -1,11 +1,12 @@
 import Back from "@assets/back.svg?react";
-import Email from "@assets/email.svg?react";
-import Phone from "@assets/phone.svg?react";
-import User from "@assets/user.svg?react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import ContactDangrousDetail from "../../components/contact-dangrous-detail";
+import ContactDetails from "../../components/contact-detail";
+import ContactInfoDetail from "../../components/contact-info-detail";
 import DeleteConfirmation from "../../components/delete-confirmation";
+import ItemDetailContainer from "../../components/item-detail-container";
 import SetAvatar from "../../components/set-avatar";
 import type { IContactItem } from "../../types";
 
@@ -46,7 +47,6 @@ function ContactPage() {
 
   return (
     <main className="flex flex-col items-center gap-4 p-4">
-      {/* Avatar uploader gets setter */}
       <div className="flex items-start justify-between w-full">
         <Back
           width={32}
@@ -64,48 +64,23 @@ function ContactPage() {
         </button>
       </div>
       <section className="flex flex-col gap-4 w-full">
-        <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
-          <User width={24} height={24} />
-          <input
-            type="text"
-            className="h-8 w-full border-none"
-            value={contact?.fullName}
-            readOnly
-          />
-        </div>
-        <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
-          <Phone width={24} height={24} />
-          <input
-            type="number"
-            className="h-8 w-full border-none"
-            value={contact?.phone}
-            readOnly
-          />
-        </div>
-        <div className="bg-white flex items-center gap-2 p-2 rounded-lg">
-          <Email width={24} height={24} />
-          <input
-            type="email"
-            placeholder="No Email"
-            className="h-8 w-full border-none"
-            value={contact?.email}
-            readOnly
-          />
-        </div>
-        <div className="bg-white flex flex-col px-4 rounded-lg divide-y-[1px] divide-gray-300 text-blue-500">
-          <p className="py-2 cursor-pointer">Send Message</p>
-          <p className="py-2 cursor-pointer">Share Contact</p>
-          <p className="py-2 cursor-pointer">Add to Favorite</p>
-        </div>
-        <div className="bg-white flex flex-col px-4 rounded-lg divide-y-[1px] divide-gray-300 text-red-500">
-          <p
-            className="py-2 cursor-pointer"
+        <ContactDetails
+          fullName={contact?.fullName as string}
+          phone={contact?.phone as number}
+          email={contact?.email}
+        />
+        <ItemDetailContainer>
+          <ContactInfoDetail title="Send Message" />
+          <ContactInfoDetail title="Share Contact" />
+          <ContactInfoDetail title="Add to Favorite" />
+        </ItemDetailContainer>
+        <ItemDetailContainer>
+          <ContactDangrousDetail
+            title="Delete Contact"
             onClick={() => setShowConfirm(true)}
-          >
-            Delete Contact
-          </p>
-          <p className="py-2 cursor-pointer">Block Contact</p>
-        </div>
+          />
+          <ContactDangrousDetail title="Block Contact" />
+        </ItemDetailContainer>
       </section>
       <DeleteConfirmation
         isOpen={showConfirm}
