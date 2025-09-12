@@ -6,6 +6,6 @@ import App from "./App";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
-    <ToastContainer position="top-center" />
+    <ToastContainer position="top-center" autoClose={500} />
   </StrictMode>
 );
